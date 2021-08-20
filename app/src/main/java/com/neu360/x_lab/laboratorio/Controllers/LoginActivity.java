@@ -126,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             txvTexto.setText("Ingrese sus datos para continuar");
             btnAutenticar.setText("Iniciar Sesión");
 
+
         });
     }
 
