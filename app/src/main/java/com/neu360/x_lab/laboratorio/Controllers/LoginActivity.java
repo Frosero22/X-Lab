@@ -123,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
             editUsuario.setVisibility(View.VISIBLE);
             editPassword.setVisibility(View.VISIBLE);
 
+
             txvTexto.setText("Ingrese sus datos para continuar");
 
             btnAutenticar.setText("Iniciar Sesión");
