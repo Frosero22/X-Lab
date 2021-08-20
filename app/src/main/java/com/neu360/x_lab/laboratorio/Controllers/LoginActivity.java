@@ -124,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
             editPassword.setVisibility(View.VISIBLE);
 
             txvTexto.setText("Ingrese sus datos para continuar");
+
             btnAutenticar.setText("Iniciar Sesión");
 
 
