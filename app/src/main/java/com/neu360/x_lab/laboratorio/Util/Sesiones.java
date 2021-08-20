@@ -62,6 +62,35 @@ public class Sesiones {
 
     }
 
+    public  static void borrarUsuario(Context context){
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_USUARIO", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+    }
+
+    public static void borrarSesion(Context context){
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_USUARIO", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences sharedEmpresaMovil = context.getSharedPreferences("CRENDECIALES_EMPRESA_MOVIL", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorEmpresaMovil = sharedEmpresaMovil.edit();
+        SharedPreferences sharedSucursal = context.getSharedPreferences("CRENDECIALES_SUCURSAL", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorSucursal = sharedSucursal.edit();
+
+
+
+        editorSucursal.clear();
+        editor.clear();
+        editorEmpresaMovil.clear();
+        editorSucursal.apply();
+        editor.apply();
+        editorEmpresaMovil.apply();
+
+    }
+
     public  static void guardaSucursal(SucursalesDTO sucursalesDTO, Context context){
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_SUCURSAL", Context.MODE_PRIVATE);

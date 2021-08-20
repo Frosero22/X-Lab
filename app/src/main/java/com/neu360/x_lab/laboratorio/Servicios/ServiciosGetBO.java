@@ -75,4 +75,21 @@ public class ServiciosGetBO {
 
     }
 
+    public static RequestGenDTO obtenerListaDetalleOrdenes(int codigoEmpresa,  int numeroOrden, String strIp, String strWar, String strToken, String strTokenType){
+
+        RequestGenDTO requestGenDTO = new RequestGenDTO();
+
+        OkHttpClient cliente = HttpRequest.buildHttpRequest(15,15,15);
+        Request request = ServiciosGetDAO.requestDetalleOrden("GET",
+                strIp+"/"+strWar+"/v1/laboratorio/det_ordenes_pagadas_pacientes/"+numeroOrden+"?codigoEmpresa="+codigoEmpresa,
+                strToken,
+                strTokenType);
+
+        requestGenDTO.setOkHttpClient(cliente);
+        requestGenDTO.setRequest(request);
+
+        return requestGenDTO;
+
+    }
+
 }

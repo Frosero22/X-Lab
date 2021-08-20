@@ -10,6 +10,8 @@ public class DetalleOrdenDTO {
     private String nombrePrestacion;
     private String nombreServicio;
 
+    private String esSeleccionado;
+
     public int getCodigoEmpresa() {
         return codigoEmpresa;
     }
@@ -64,5 +66,13 @@ public class DetalleOrdenDTO {
 
     public void setNombreServicio(String nombreServicio) {
         this.nombreServicio = nombreServicio;
+    }
+
+    public String getEsSeleccionado() {
+        return esSeleccionado;
+    }
+
+    public void setEsSeleccionado(String esSeleccionado) {
+        this.esSeleccionado = esSeleccionado;
     }
 }

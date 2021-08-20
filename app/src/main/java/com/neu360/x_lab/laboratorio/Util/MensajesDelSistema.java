@@ -46,4 +46,10 @@ public class MensajesDelSistema {
         Toast.makeText(context, strTexto, Toast.LENGTH_SHORT).show();
     }
 
+    public static void mensajeFlotanteCortoLooper(Context context, String strTexto){
+        Looper.prepare();
+        Toast.makeText(context, strTexto, Toast.LENGTH_SHORT).show();
+        Looper.loop();
+    }
+
 }

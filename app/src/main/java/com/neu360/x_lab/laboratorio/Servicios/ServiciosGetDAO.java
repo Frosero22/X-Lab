@@ -52,5 +52,17 @@ public class ServiciosGetDAO {
 
     }
 
+    public static Request requestDetalleOrden(String strTipoRequest, String strUrl, String strToken, String strTokenType){
+
+        Request request;
+        request = new Request.Builder().url(strUrl)
+                .method(strTipoRequest, null)
+                .addHeader("Authorization",strTokenType+" "+strToken)
+                .build();
+
+        return request;
+
+    }
+
 
 }

@@ -238,7 +238,7 @@
                     android:layout_width="@dimen/edittext_width_signos"
                     android:layout_height="@dimen/edittext_height"
                     android:background="@drawable/edit_text_basico"
-                    android:hint="Correo"
+                    android:hint="Telefóno"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"

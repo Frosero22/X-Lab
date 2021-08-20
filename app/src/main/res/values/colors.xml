@@ -7,4 +7,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorEstadoPaciente">#03A9F4</color>
     <color name="negro">#000000</color>
+    <color name="itemProduct">#3b3b3b</color>
+
 </resources>

@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initComponentes(){
 
+        getSupportActionBar().setTitle("X-Laboratorio");
         empresaMovilDTO = Sesiones.obtieneEmpresaMovil(LoginActivity.this);
 
 
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         btnAutenticar = findViewById(R.id.btn_iniciar_sesion);
         btnAutenticar.setOnClickListener(v -> {
 
-            if(empresaMovilDTO != null){
+            if(empresaMovilDTO.getCodigoEmpresa() != 0){
 
                 autenticarUsuario();
 
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
-        if(empresaMovilDTO != null){
+        if(empresaMovilDTO.getCodigoEmpresa() != 0){
 
             habilitaComponentes();
 
@@ -146,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 progressDialog.dismiss();
                 e.printStackTrace();
-                MensajesDelSistema.mensajeError(LoginActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+e.toString());
+                MensajesDelSistema.mensajeErrorLooper(LoginActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+e.toString());
             }
 
             @Override
@@ -174,11 +175,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             Sesiones.guardaEmpresaMovil(empresaMovilDTO,LoginActivity.this);
                             habilitaComponentes();
-                            MensajesDelSistema.mensajeFlotanteCorto(LoginActivity.this,"Felicidades! , has completado la configuración de la aplicación");
+                            MensajesDelSistema.mensajeFlotanteCortoLooper(LoginActivity.this,"Felicidades! , has completado la configuración de la aplicación");
 
                         }else{
 
-                            MensajesDelSistema.mensajeError(LoginActivity.this,"Error en la Transacción","El numero de ruc ingresado es incorrecto");
+                            MensajesDelSistema.mensajeErrorLooper(LoginActivity.this,"Error en la Transacción","El numero de ruc ingresado es incorrecto");
 
                         }
 
@@ -189,7 +190,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
 
                         progressDialog.dismiss();
-                        MensajesDelSistema.mensajeError(LoginActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+json.getString("message"));
+                        MensajesDelSistema.mensajeErrorLooper(LoginActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+json.getString("message"));
 
 
                     }
@@ -198,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                 }catch (Exception e){
                     progressDialog.dismiss();
                     e.printStackTrace();
-                    MensajesDelSistema.mensajeError(LoginActivity.this,"Error en la Transacción","El numero de ruc ingresado no es valido.");
+                    MensajesDelSistema.mensajeErrorLooper(LoginActivity.this,"Error en la Transacción","El numero de ruc ingresado no es valido.");
                 }
 
 
@@ -385,51 +386,47 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void preparaSelector() {
-        runOnUiThread(new Runnable() {
+        runOnUiThread((Runnable) () -> {
+            final View view = getLayoutInflater().inflate(R.layout.sucursales, null);
+            final AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
+            alertDialog.setTitle("Selecciona la sucursal");
+            alertDialog.setCancelable(false);
 
-            @Override
-            public void run() {
-                final View view = getLayoutInflater().inflate(R.layout.sucursales, null);
-                final AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
-                alertDialog.setTitle("Selecciona la sucursal");
-                alertDialog.setCancelable(false);
-
-                final Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
-                ArrayAdapter adapter = new ArrayAdapter(LoginActivity.this, android.R.layout.simple_spinner_item, spinnerArraySucursales);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinner.setAdapter(adapter);
+            final Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
+            ArrayAdapter adapter = new ArrayAdapter(LoginActivity.this, android.R.layout.simple_spinner_item, spinnerArraySucursales);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
 
 
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-                        SucursalesDTO sub = (SucursalesDTO)spinner.getSelectedItem();
+                    SucursalesDTO sub = (SucursalesDTO)spinner.getSelectedItem();
 
-                        if (sub == null ){
-                            Toast.makeText(getApplicationContext(), "Selecciona la sucursal", Toast.LENGTH_LONG).show();
-                            return;
-                        } else {
-                            Sesiones.guardaSucursal(sub,LoginActivity.this);
-                            goToPacientes();
-                        }
-
-
+                    if (sub == null ){
+                        Toast.makeText(getApplicationContext(), "Selecciona la sucursal", Toast.LENGTH_LONG).show();
+                        return;
+                    } else {
+                        Sesiones.guardaSucursal(sub,LoginActivity.this);
+                        goToPacientes();
                     }
-                });
 
 
-                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        alertDialog.dismiss();
-                    }
-                });
+                }
+            });
 
 
-                alertDialog.setView(view);
-                alertDialog.show();
-            }
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    alertDialog.dismiss();
+                }
+            });
+
+
+            alertDialog.setView(view);
+            alertDialog.show();
         });
 
     }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/seleccionarTodos"
+        android:orderInCategory="100"
+        android:title="Selecciónar Todos"
+        android:icon="@drawable/seleccionar"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/imprimir"
+        android:orderInCategory="100"
+        android:title="Imprimir Etiquetas"
+        android:icon="@drawable/impresora"
+        app:showAsAction="always" />
+
+</menu>
