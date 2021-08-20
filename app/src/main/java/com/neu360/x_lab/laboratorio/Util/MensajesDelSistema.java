@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Looper;
+import android.widget.Toast;
 
 import com.neu360.x_lab.laboratorio.Controllers.LoginActivity;
 
@@ -39,6 +40,10 @@ public class MensajesDelSistema {
                         }).show();
 
         Looper.loop();
+    }
+
+    public static void mensajeFlotanteCorto(Context context, String strTexto){
+        Toast.makeText(context, strTexto, Toast.LENGTH_SHORT).show();
     }
 
 }

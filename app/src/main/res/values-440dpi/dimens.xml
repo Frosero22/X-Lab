@@ -21,4 +21,34 @@
     <dimen name="et_padding_left">4dp</dimen>
     <dimen name="et_padding_right">4dp</dimen>
     <dimen name="et_padding_top">7dp</dimen>
+
+
+
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+
+    <dimen name="item_main_margin">40dp</dimen>
+    <dimen name="item_main_margin_top">28dp</dimen>
+    <dimen name="item_main_width">148dp</dimen>
+    <dimen name="item_main_height">143dp</dimen>
+    <dimen name="icon_main_width">95dp</dimen>
+    <dimen name="img_width">297dp</dimen>
+    <dimen name="textview_width">263dp</dimen>
+    <dimen name="textview_height">57dp</dimen>
+    <dimen name="textsize">35dp</dimen>
+    <dimen name="textsizedos">28dp</dimen>
+    <dimen name="edittext_width">350dp</dimen>
+    <dimen name="edittext_height">65dp</dimen>
+    <dimen name="textview_widht_dos">364dp</dimen>
+    <dimen name="spinner">135dp</dimen>
+    <dimen name="textInputLayout">405dp</dimen>
+    <dimen name="spinner_dos">242dp</dimen>
+    <dimen name="textInputLayoutDos">344dp</dimen>
+    <dimen name="textInputLayoutD">308dp</dimen>
+    <dimen name="textD">270dp</dimen>
+    <dimen name="layout_width_signos">400dp</dimen>
+    <dimen name="edittext_width_identificacion_texto">230dp</dimen>
+    <dimen name="edittext_width_paciente">176dp</dimen>
+    <dimen name="edittext_width_identificacion">110dp</dimen>
+    <dimen name="edittext_widt_temp">136dp</dimen>
+
 </resources>

@@ -3,4 +3,8 @@
     <color name="rojo_xuit">#E63D3D</color>
     <color name="fondos">#E2E6E9</color>
     <color name="borderColorTv">#d2d2d2</color>
+    <color name="colorItemPaciente">#EFF2F7</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorEstadoPaciente">#03A9F4</color>
+    <color name="negro">#000000</color>
 </resources>

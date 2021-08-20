@@ -14,22 +14,21 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/radius_background"
         android:minHeight="55dp"
-        android:paddingLeft="@dimen/et_padding_left"
         android:paddingRight="@dimen/et_padding_right"
         android:paddingTop="@dimen/et_padding_top">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="1dp"
-        android:text="Sucursal"
-        android:textSize="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="1dp"
+            android:text="Sucursal"
+            android:textSize="12dp" />
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -39,4 +39,40 @@ public class ServiciosGetBO {
 
     }
 
+
+    public static RequestGenDTO obtenerOrdenesPendientes(int codigoEmpresa, int codigoSucursal, String strFecha, String strIp, String strWar, String strToken, String strTokenType){
+
+        RequestGenDTO requestGenDTO = new RequestGenDTO();
+
+        OkHttpClient cliente = HttpRequest.buildHttpRequest(15,15,15);
+        Request request = ServiciosGetDAO.requestOrdenesPendientes("GET",
+                strIp+"/"+strWar+"/v1/laboratorio/ordenes_pagadas_pacientes?codigoEmpresa="+codigoEmpresa+"&codigoSucursal="+codigoSucursal+"&fechaConsulta="+strFecha,
+                strToken,
+                strTokenType);
+
+        requestGenDTO.setOkHttpClient(cliente);
+        requestGenDTO.setRequest(request);
+
+        return requestGenDTO;
+
+    }
+
+
+    public static RequestGenDTO obtenerInformacionBasica(int codigoEmpresa,  int idPaciente, String strIp, String strWar, String strToken, String strTokenType){
+
+        RequestGenDTO requestGenDTO = new RequestGenDTO();
+
+        OkHttpClient cliente = HttpRequest.buildHttpRequest(15,15,15);
+        Request request = ServiciosGetDAO.requesInformacionBasica("GET",
+                strIp+"/"+strWar+"/v1/pacientes/"+idPaciente+"?codigoEmpresa="+codigoEmpresa,
+                strToken,
+                strTokenType);
+
+        requestGenDTO.setOkHttpClient(cliente);
+        requestGenDTO.setRequest(request);
+
+        return requestGenDTO;
+
+    }
+
 }

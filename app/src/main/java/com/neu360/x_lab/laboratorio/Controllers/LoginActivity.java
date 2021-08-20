@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initComponentes(){
 
+        empresaMovilDTO = Sesiones.obtieneEmpresaMovil(LoginActivity.this);
 
 
         txvTexto = findViewById(R.id.text_view_texto);
@@ -129,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
             btnAutenticar.setText("Iniciar Sesión");
 
 
+
         });
     }
 
@@ -172,6 +174,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             Sesiones.guardaEmpresaMovil(empresaMovilDTO,LoginActivity.this);
                             habilitaComponentes();
+                            MensajesDelSistema.mensajeFlotanteCorto(LoginActivity.this,"Felicidades! , has completado la configuración de la aplicación");
 
                         }else{
 

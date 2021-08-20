@@ -1,14 +1,19 @@
 package com.neu360.x_lab.laboratorio.Util;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.Spinner;
 
+import com.neu360.x_lab.laboratorio.Controllers.PacientesPendientesActivity;
 import com.neu360.x_lab.laboratorio.DTO.EmpresasDTO;
 import com.neu360.x_lab.laboratorio.DTO.GrupoEmpresaDTO;
 import com.neu360.x_lab.laboratorio.DTO.SucursalesDTO;
+import com.neu360.x_lab.laboratorio.Globales.VariablesGlobales;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +25,10 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class Varios {
+
+    private static DatePickerDialog.OnDateSetListener setListener;
+    private static  VariablesGlobales variablesGlobales = new VariablesGlobales();
+
     public static ProgressDialog progressDialog(Context context, String mensaje){
 
         ProgressDialog progressDialog = new ProgressDialog(context);
@@ -136,6 +145,12 @@ public class Varios {
         return spinnerArraySucursales;
 
     }
+
+
+
+
+
+
 
 
 }

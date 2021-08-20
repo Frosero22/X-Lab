@@ -15,7 +15,10 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.XLab">
         <activity android:name=".laboratorio.Controllers.DetalleDeOrdenActivity"></activity>
-        <activity android:name=".laboratorio.Controllers.ActualizacionDeDatosActivity" />
+        <activity
+              android:name=".laboratorio.Controllers.ActualizacionDeDatosActivity"
+              android:parentActivityName=".laboratorio.Controllers.PacientesPendientesActivity"/>
+
         <activity android:name=".laboratorio.Controllers.PacientesPendientesActivity" />
         <activity android:name=".laboratorio.Controllers.LoginActivity">
             <intent-filter>

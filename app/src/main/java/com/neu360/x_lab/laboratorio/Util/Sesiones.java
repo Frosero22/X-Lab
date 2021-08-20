@@ -22,6 +22,22 @@ public class Sesiones {
 
     }
 
+    public static EmpresaMovilDTO obtieneEmpresaMovil(Context context){
+
+        EmpresaMovilDTO empresaMovilDTO = new EmpresaMovilDTO();
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_EMPRESA_MOVIL", Context.MODE_PRIVATE);
+
+        empresaMovilDTO.setCodigoEmpresa(sharedPreferences.getInt("codigoEmpresa",0));
+        empresaMovilDTO.setNumeroIdentificacion(sharedPreferences.getString("numeroIdentificacion",""));
+        empresaMovilDTO.setNombreWarWsXHealth(sharedPreferences.getString("nombreWarWsXHealth",""));
+        empresaMovilDTO.setDireccionIpWsXHealth(sharedPreferences.getString("direccionIpWsXHealth",""));
+
+
+        return empresaMovilDTO;
+
+
+    }
+
     public  static void guardaUsuario(UsuarioDTO usuarioDTO, Context context){
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_USUARIO", Context.MODE_PRIVATE);
@@ -33,6 +49,19 @@ public class Sesiones {
 
     }
 
+    public static UsuarioDTO obtenerUsuario(Context context){
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_USUARIO", Context.MODE_PRIVATE);
+        usuarioDTO.setTokenType(sharedPreferences.getString("tokenType",""));
+        usuarioDTO.setIdToken(sharedPreferences.getString("idToken",""));
+        usuarioDTO.setCodigoUsuario(sharedPreferences.getString("codigoUsuario",""));
+
+        return usuarioDTO;
+
+
+    }
+
     public  static void guardaSucursal(SucursalesDTO sucursalesDTO, Context context){
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_SUCURSAL", Context.MODE_PRIVATE);
@@ -40,6 +69,19 @@ public class Sesiones {
         editor.putString("nombreSucursal",sucursalesDTO.getNombreSucursal());
         editor.putInt("codigoSucursal",sucursalesDTO.getCodigoSucursal());
         editor.apply();
+
+    }
+
+    public static SucursalesDTO obtieneESucursal(Context context){
+
+        SucursalesDTO sucursalesDTO = new SucursalesDTO();
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CRENDECIALES_SUCURSAL", Context.MODE_PRIVATE);
+        sucursalesDTO.setCodigoSucursal(sharedPreferences.getInt("codigoSucursal",0));
+        sucursalesDTO.setNombreSucursal(sharedPreferences.getString("nombreSucursal",""));
+
+
+        return sucursalesDTO;
+
 
     }
 

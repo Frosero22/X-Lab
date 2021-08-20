@@ -1,9 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".laboratorio.Controllers.ActualizacionDeDatosActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:text="Actualización de datos de pacientes"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/rojo_xuit"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInpPrimerNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtPrimerNombre"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Primer Nombre"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textCapCharacters"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInpSegundoNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtSegundoNombre"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Segundo Nombre"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textCapCharacters"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInpPrimerApellido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtPrimerApellido"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Primer Apellido"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textCapCharacters"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInpSegundoApellido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtSegundoApellido"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Segundo Apellido"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textCapCharacters"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/radMasculino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MASCULINO"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="80dp">
+
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/radFemenino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FEMENINO"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="100dp">
+
+                    </RadioButton>
+
+                </LinearLayout>
+
+
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnTomarFechaNacimiento"
+                android:layout_width="335dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boton_basico"
+                android:text="Tomar Fecha de Nacimiento"
+                android:textColor="#FFF"
+                android:textSize="15dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInpFechaNacimiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtFechaNacimiento"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Fecha de Nacimiento"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="text"
+                    android:enabled="false"
+                    android:textColor="@color/negro"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInpCorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtCorreo"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Correo"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInptTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <EditText
+                    android:id="@+id/txtTelefono"
+                    android:layout_width="@dimen/edittext_width_signos"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/edit_text_basico"
+                    android:hint="Correo"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <Button
+                android:id="@+id/btnActualizar"
+                android:layout_width="384dp"
+                android:layout_height="67dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/boton_basico"
+                android:text="Actualizar Paciente"
+                android:textColor="#FFF"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

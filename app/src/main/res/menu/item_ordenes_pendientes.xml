@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/cerrarSesion"
+        android:orderInCategory="100"
+        android:title="Cerrar Sesión"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/cambiarSucursal"
+        android:orderInCategory="100"
+        android:title="Cambiar Sucursal"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/reiniciarAplicacion"
+        android:orderInCategory="100"
+        android:title="Reiniciar Aplicación"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/calendario"
+        android:orderInCategory="100"
+        android:icon="@drawable/calendario"
+        android:title="Seleccionar Todos"
+        app:showAsAction="always" />
+
+</menu>
