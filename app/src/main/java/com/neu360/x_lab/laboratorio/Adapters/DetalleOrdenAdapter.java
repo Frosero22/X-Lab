@@ -62,10 +62,10 @@ public class DetalleOrdenAdapter extends RecyclerView.Adapter<DetalleOrdenAdapte
         holder.chkSeleccionado.setOnClickListener(v -> {
             if(holder.chkSeleccionado.isChecked()){
 
-                lsDetalleOrden.get(position).setEsSeleccionado("N");
+                lsDetalleOrden.get(position).setEsSeleccionado("S");
             }else{
 
-                lsDetalleOrden.get(position).setEsSeleccionado("S");
+                lsDetalleOrden.get(position).setEsSeleccionado("N");
             }
         });
 

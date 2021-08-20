@@ -9,8 +9,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.gson.Gson;
 import com.neu360.x_lab.R;
 import com.neu360.x_lab.laboratorio.Adapters.DetalleOrdenAdapter;
 import com.neu360.x_lab.laboratorio.DTO.DetalleOrdenDTO;
@@ -24,6 +26,7 @@ import com.neu360.x_lab.laboratorio.Util.Sesiones;
 import com.neu360.x_lab.laboratorio.Util.Varios;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -104,6 +107,11 @@ public class DetalleDeOrdenActivity extends AppCompatActivity {
         imprimir.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                try {
+                    armaArregloImpresion();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 return false;
             }
         });
@@ -115,20 +123,34 @@ public class DetalleDeOrdenActivity extends AppCompatActivity {
     }
 
 
-    public void armaArregloImpresion(){
+    public void armaArregloImpresion() throws JSONException {
 
-        List<DetalleOrdenDTO> lsDetalleOrden = new ArrayList<>();
+        List<JSONObject> json = new ArrayList<>();
 
-        for(DetalleOrdenDTO detalleOrdenDTO : lsDetalleOrden){
+
+        for(DetalleOrdenDTO detalleOrdenDTO : lsDetalle){
 
             if(detalleOrdenDTO.getEsSeleccionado().equalsIgnoreCase("S")){
 
+                JSONObject jsonObject = new JSONObject();
 
-                lsDetalleOrden.add(detalleOrdenDTO);
+                jsonObject.put("lineaDetalleOrden",detalleOrdenDTO.getLineaDetalleOrden());
+                jsonObject.put("codigoServicio",detalleOrdenDTO.getCodigoServicio());
+                jsonObject.put("codigoPrestacion",detalleOrdenDTO.getCodigoPrestacion());
+                jsonObject.put("codigoEmpresa",detalleOrdenDTO.getCodigoEmpresa());
+                jsonObject.put("numeroOrden",detalleOrdenDTO.getNumeroOrden());
+
+               json.add(jsonObject);
+
 
             }
 
         }
+
+
+
+        Log.e("---- > ","LISTA --- > "+json.toString());
+
 
     }
 
