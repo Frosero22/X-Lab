@@ -24,7 +24,7 @@ public class EmpresaMovilDTO {
     }
 
     public String getDireccionIpWsXHealth() {
-        return "http://192.168.100.60:3000";
+        return "http://192.168.100.228:3000";
     }
 
     public void setDireccionIpWsXHealth(String direccionIpWsXHealth) {

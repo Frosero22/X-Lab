@@ -49,6 +49,21 @@ public class Sesiones {
 
     }
 
+    public static void guardaFecha(String fecha, Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("FECHA_SELECCIONADA",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("fecha",fecha);
+        editor.apply();
+    }
+
+    public static String obtieneFecha(Context context){
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("FECHA_SELECCIONADA",Context.MODE_PRIVATE);
+        String strFecha = sharedPreferences.getString("fecha","");
+        return strFecha;
+
+    }
+
     public static UsuarioDTO obtenerUsuario(Context context){
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
@@ -113,5 +128,7 @@ public class Sesiones {
 
 
     }
+
+
 
 }

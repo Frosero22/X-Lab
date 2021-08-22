@@ -5,6 +5,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -70,12 +71,14 @@ public class PacientesPendientesActivity extends AppCompatActivity {
 
     private SucursalesDTO[] spinnerArraySucursales;
 
+    private String fechaSeleccionada;
+
     private void initDatePicker()
     {
         DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
             month = month + 1;
-            String date = makeDateString(day, month, year);
-            listaOrdenesPendientes(date);
+            fechaSeleccionada = makeDateString(day, month, year);
+            listaOrdenesPendientes(fechaSeleccionada);
 
         };
 
@@ -84,7 +87,7 @@ public class PacientesPendientesActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        int style = AlertDialog.THEME_HOLO_LIGHT;
+        int style = AlertDialog.THEME_HOLO_DARK;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
 
@@ -160,8 +163,8 @@ public class PacientesPendientesActivity extends AppCompatActivity {
         usuarioDTO = Sesiones.obtenerUsuario(PacientesPendientesActivity.this);
         recyclerView = findViewById(R.id.lista_pacientes_pendientes);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaActual = simpleDateFormat.format(new Date());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
 
         lsOrdenes = new ArrayList<>();
         lsAuxiliar = new ArrayList<>();
@@ -170,14 +173,24 @@ public class PacientesPendientesActivity extends AppCompatActivity {
         LinearLayoutManager lm = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(lm);
 
-        pacientesPendientesAdapter = new PacientesPendientesAdapter(lsOrdenes,PacientesPendientesActivity.this);
+        pacientesPendientesAdapter = new PacientesPendientesAdapter(lsOrdenes,PacientesPendientesActivity.this,fechaSeleccionada);
         recyclerView.setAdapter(pacientesPendientesAdapter);
 
         recyclerView.setAdapter(pacientesPendientesAdapter);
 
         getSupportActionBar().setTitle("Pacientes Pendientes");
 
-        listaOrdenesPendientes(fechaActual);
+        fechaSeleccionada = Sesiones.obtieneFecha(PacientesPendientesActivity.this);
+
+        if(fechaSeleccionada == null || fechaSeleccionada.equalsIgnoreCase("")){
+            fechaSeleccionada = simpleDateFormat.format(new Date());
+        }
+
+
+
+
+        listaOrdenesPendientes(fechaSeleccionada);
+
 
     }
 
@@ -199,7 +212,7 @@ public class PacientesPendientesActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 progressDialog.dismiss();
                 e.printStackTrace();
-                MensajesDelSistema.mensajeError(PacientesPendientesActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+e.toString());
+                MensajesDelSistema.mensajeErrorLooper(PacientesPendientesActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+e.toString());
             }
 
             @Override
@@ -216,6 +229,12 @@ public class PacientesPendientesActivity extends AppCompatActivity {
                         JSONArray jsonArray = json.getJSONArray("data");
 
                         if(jsonArray.length() < 1){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    recyclerView.setAdapter(null);
+                                }
+                            });
 
                             MensajesDelSistema.mensajeFlotanteCortoLooper(PacientesPendientesActivity.this,"No hay pacientes en espera actualmente");
 
@@ -234,6 +253,12 @@ public class PacientesPendientesActivity extends AppCompatActivity {
 
                             }
 
+                            runOnUiThread(() -> {
+                                pacientesPendientesAdapter = new PacientesPendientesAdapter(lsOrdenes,PacientesPendientesActivity.this,fechaSeleccionada);
+                                recyclerView.setAdapter(pacientesPendientesAdapter);
+                                pacientesPendientesAdapter.notifyDataSetChanged();
+                            });
+
                         }
 
 
@@ -241,7 +266,7 @@ public class PacientesPendientesActivity extends AppCompatActivity {
                     }else{
 
                         progressDialog.dismiss();
-                        MensajesDelSistema.mensajeError(PacientesPendientesActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+json.getString("message"));
+                        MensajesDelSistema.mensajeErrorLooper(PacientesPendientesActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+json.getString("message"));
 
 
                     }
@@ -250,7 +275,7 @@ public class PacientesPendientesActivity extends AppCompatActivity {
                 }catch (Exception e){
                     progressDialog.dismiss();
                     e.printStackTrace();
-                    MensajesDelSistema.mensajeError(PacientesPendientesActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+e.toString());
+                    MensajesDelSistema.mensajeErrorLooper(PacientesPendientesActivity.this,"Excepción No Controlada","Mensaje Obtenido: "+e.toString());
                 }
 
             }

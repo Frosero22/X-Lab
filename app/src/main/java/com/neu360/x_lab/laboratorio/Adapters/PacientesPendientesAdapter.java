@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.neu360.x_lab.R;
 import com.neu360.x_lab.laboratorio.Controllers.ActualizacionDeDatosActivity;
 import com.neu360.x_lab.laboratorio.DTO.OrdenesDTO;
+import com.neu360.x_lab.laboratorio.Util.Sesiones;
 
 import java.util.List;
 
@@ -29,13 +30,15 @@ public class PacientesPendientesAdapter extends RecyclerView.Adapter<PacientesPe
     private List<OrdenesDTO> lsOrdenes;
     private OrdenesDTO ordenesDTO;
     private static Context context;
+    private static String fechaSeleccionada;
 
 
     private View.OnClickListener listener;
 
-    public PacientesPendientesAdapter(List<OrdenesDTO> lsOrdenes, Context context){
+    public PacientesPendientesAdapter(List<OrdenesDTO> lsOrdenes, Context context, String fechaSeleccionada){
         this.lsOrdenes = lsOrdenes;
         this.context = context;
+        this.fechaSeleccionada = fechaSeleccionada;
 
     }
 
@@ -62,6 +65,8 @@ public class PacientesPendientesAdapter extends RecyclerView.Adapter<PacientesPe
             txvGenero = itemView.findViewById(R.id.txvGenero);
             btnTomarAtencion = itemView.findViewById(R.id.btnTomarAtencion);
             btnTomarAtencion.setOnClickListener(v -> {
+
+                Sesiones.guardaFecha(fechaSeleccionada,context);
 
                 Bundle extras = new Bundle();
                 extras.putInt("numeroOrden",lsOrdenes.get(getAdapterPosition()).getNumeroOrden());
