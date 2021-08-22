@@ -39,14 +39,12 @@ public class DetalleOrdenAdapter extends RecyclerView.Adapter<DetalleOrdenAdapte
     public static class HolderDetalleOrdenes extends RecyclerView.ViewHolder{
 
         TextView txtNombrePrestacion;
-        TextView txtCodigoPrestacion;
         CheckBox chkSeleccionado;
 
 
         public HolderDetalleOrdenes(@NonNull View itemView) {
             super(itemView);
             txtNombrePrestacion = itemView.findViewById(R.id.txtNombrePrestacion);
-            txtCodigoPrestacion = itemView.findViewById(R.id.txtCodigoPrestacion);
             chkSeleccionado = itemView.findViewById(R.id.chkSeleccionado);
 
         }
@@ -56,8 +54,7 @@ public class DetalleOrdenAdapter extends RecyclerView.Adapter<DetalleOrdenAdapte
     @Override
     public void onBindViewHolder(@NonNull DetalleOrdenAdapter.HolderDetalleOrdenes holder, int position) {
 
-        holder.txtCodigoPrestacion.setText(String.valueOf(lsDetalleOrden.get(position).getCodigoPrestacion()));
-        holder.txtNombrePrestacion.setText(lsDetalleOrden.get(position).getNombrePrestacion());
+        holder.txtNombrePrestacion.setText(String.valueOf(lsDetalleOrden.get(position).getCodigoPrestacion())+" - "+lsDetalleOrden.get(position).getNombrePrestacion());
 
         holder.chkSeleccionado.setOnClickListener(v -> {
             if(holder.chkSeleccionado.isChecked()){
