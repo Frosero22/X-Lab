@@ -25,7 +25,7 @@
                 android:layout_marginTop="@dimen/margin_de_texto_cabecera"
                 android:fontFamily="sans-serif-light"
 
-                android:text="X-Vitales"
+                android:text="X-Laboratorio"
                 android:textColor="@color/rojo_xuit"
                 android:textSize="@dimen/tamanio_texto_cabecera"
                 android:textStyle="bold" />

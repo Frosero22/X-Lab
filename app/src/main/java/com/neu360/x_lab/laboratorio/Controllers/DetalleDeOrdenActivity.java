@@ -127,26 +127,41 @@ public class DetalleDeOrdenActivity extends AppCompatActivity {
 
         List<JSONObject> json = new ArrayList<>();
 
+        int cantSeleccionada = 0;
 
-        for(DetalleOrdenDTO detalleOrdenDTO : lsDetalle){
+        for(DetalleOrdenDTO detalle : lsDetalle){
+            if(detalle.getEsSeleccionado().equalsIgnoreCase("S")){
+                cantSeleccionada++;
+            }
+        }
 
-            if(detalleOrdenDTO.getEsSeleccionado().equalsIgnoreCase("S")){
+        if(cantSeleccionada != 0){
 
-                JSONObject jsonObject = new JSONObject();
+            for(DetalleOrdenDTO detalleOrdenDTO : lsDetalle){
 
-                jsonObject.put("lineaDetalleOrden",detalleOrdenDTO.getLineaDetalleOrden());
-                jsonObject.put("codigoServicio",detalleOrdenDTO.getCodigoServicio());
-                jsonObject.put("codigoPrestacion",detalleOrdenDTO.getCodigoPrestacion());
-                jsonObject.put("codigoEmpresa",detalleOrdenDTO.getCodigoEmpresa());
-                jsonObject.put("numeroOrden",detalleOrdenDTO.getNumeroOrden());
+                if(detalleOrdenDTO.getEsSeleccionado().equalsIgnoreCase("S")){
 
-               json.add(jsonObject);
+                    JSONObject jsonObject = new JSONObject();
 
+                    jsonObject.put("lineaDetalleOrden",detalleOrdenDTO.getLineaDetalleOrden());
+                    jsonObject.put("codigoServicio",detalleOrdenDTO.getCodigoServicio());
+                    jsonObject.put("codigoPrestacion",detalleOrdenDTO.getCodigoPrestacion());
+                    jsonObject.put("codigoEmpresa",detalleOrdenDTO.getCodigoEmpresa());
+                    jsonObject.put("numeroOrden",detalleOrdenDTO.getNumeroOrden());
+
+                    json.add(jsonObject);
+
+
+                }
 
             }
 
-        }
+        }else{
 
+
+            MensajesDelSistema.mensajeFlotanteCorto(DetalleDeOrdenActivity.this,"Debe selecciónar al menos un elemento");
+
+        }
 
 
         Log.e("---- > ","LISTA --- > "+json.toString());

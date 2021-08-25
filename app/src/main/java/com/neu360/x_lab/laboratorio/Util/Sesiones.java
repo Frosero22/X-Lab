@@ -64,6 +64,15 @@ public class Sesiones {
 
     }
 
+    public static void borraFecha(Context context){
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("FECHA_SELECCIONADA",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+    }
+
     public static UsuarioDTO obtenerUsuario(Context context){
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();

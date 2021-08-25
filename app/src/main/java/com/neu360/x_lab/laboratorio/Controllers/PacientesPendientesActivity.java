@@ -180,16 +180,24 @@ public class PacientesPendientesActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Pacientes Pendientes");
 
+        Integer bandera = 0;
         fechaSeleccionada = Sesiones.obtieneFecha(PacientesPendientesActivity.this);
 
         if(fechaSeleccionada == null || fechaSeleccionada.equalsIgnoreCase("")){
             fechaSeleccionada = simpleDateFormat.format(new Date());
+        }else{
+            bandera = 1;
         }
 
 
 
 
         listaOrdenesPendientes(fechaSeleccionada);
+        if(bandera == 1){
+            Sesiones.borraFecha(PacientesPendientesActivity.this);
+        }
+
+
 
 
     }
@@ -226,15 +234,18 @@ public class PacientesPendientesActivity extends AppCompatActivity {
                     if(response.code() == 200){
 
                         progressDialog.dismiss();
+
+                        runOnUiThread(() -> {
+                            lsOrdenes.clear();
+                            lsAuxiliar.clear();
+                            recyclerView.setAdapter(null);
+                            pacientesPendientesAdapter.notifyDataSetChanged();
+                        });
+
                         JSONArray jsonArray = json.getJSONArray("data");
 
                         if(jsonArray.length() < 1){
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    recyclerView.setAdapter(null);
-                                }
-                            });
+                            runOnUiThread(() -> recyclerView.setAdapter(null));
 
                             MensajesDelSistema.mensajeFlotanteCortoLooper(PacientesPendientesActivity.this,"No hay pacientes en espera actualmente");
 

@@ -8,5 +8,6 @@
     <color name="colorEstadoPaciente">#03A9F4</color>
     <color name="negro">#000000</color>
     <color name="itemProduct">#3b3b3b</color>
+    <color name="colorItemSignos">#EFF2F7</color>
 
 </resources>

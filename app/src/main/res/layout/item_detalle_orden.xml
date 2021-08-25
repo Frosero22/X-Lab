@@ -1,56 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardPaciente"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/item_vertical_margin"
-    android:paddingLeft="@dimen/item_horizontal_margin"
-    android:paddingRight="@dimen/item_horizontal_margin"
-    android:paddingTop="@dimen/item_vertical_margin"
+    android:focusable="true"
+    android:clickable="true"
+    card_view:cardElevation="1dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@color/colorItemSignos"
+    card_view:cardCornerRadius="15dp"
+    card_view:cardUseCompatPadding="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="523dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal|top"
+        android:background="@color/colorItemPaciente">
 
-        android:paddingTop="10px">
-
-        <TextView
-            android:layout_width="104dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Prestación:"
-            android:textSize="18dp"
-            android:layout_marginLeft="5dp"
-            android:textStyle="italic"/>
-
-        <TextView
-            android:id="@+id/txtNombrePrestacion"
-            android:layout_width="402dp"
-            android:layout_height="32dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="5dp"
-            android:text="HEMOGLOBINA COVID 19 PRC ANTIGENOS"
-            android:textColor="@color/itemProduct"
-            android:textSize="19dp" />
-    </LinearLayout>
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="left">
 
 
 
 
-    <CheckBox
-        android:id="@+id/chkSeleccionado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="530dp"
-        android:layout_marginTop="-43dp"
-        android:scaleY="1.50"
-        android:scaleX="1.50">
+        </LinearLayout>
 
-    </CheckBox>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prestación:"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtNombrePrestacion"
+                android:layout_width="382dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:paddingLeft="10dp"
+                android:text="HEMOGLOBINA COVID 19 ANTIGENOS  COVID"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/chkSeleccionado"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:scaleX="1.50"
+            android:scaleY="1.50"
+            android:layout_marginTop="-40dp"
+            android:layout_marginLeft="260dp">
+
+        </CheckBox>
 
 
 
-</LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@android:color/darker_gray"/>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+
+
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>
+
